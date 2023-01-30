@@ -9,7 +9,7 @@
   <parent>
     <groupId>org.jboss.ws.cxf</groupId>
     <artifactId>jbossws-cxf</artifactId>
-    <version>5.4.8.Final</version>
+    <version>5.4.8.Final-redhat-00001</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -38,7 +38,7 @@
     <port-offset.shared-tests.default-config-tests>20000</port-offset.shared-tests.default-config-tests>
     <port-offset.shared-tests.address-rewrite>25000</port-offset.shared-tests.address-rewrite>
     <port-offset.perf-tests.jboss>30000</port-offset.perf-tests.jboss>
-    <groovyScriptSuffix></groovyScriptSuffix>
+    <groovyScriptSuffix />
   </properties>
 
   <!-- Modules -->
@@ -53,7 +53,7 @@
     <dependency>
       <groupId>org.jboss.ws.cxf</groupId>
       <artifactId>jbossws-cxf-test-utils</artifactId>
-      <version>${project.version}</version>
+      <version>5.4.8.Final-redhat-00001</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -81,17 +81,17 @@
     <dependency>
       <groupId>org.jboss.ws.cxf</groupId>
       <artifactId>jbossws-cxf-client</artifactId>
-      <version>${project.version}</version>
+      <version>5.4.8.Final-redhat-00001</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.ws.cxf</groupId>
       <artifactId>jbossws-cxf-jaspi</artifactId>
-      <version>${project.version}</version>
+      <version>5.4.8.Final-redhat-00001</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.ws.cxf</groupId>
       <artifactId>jbossws-cxf-factories</artifactId>
-      <version>${project.version}</version>
+      <version>5.4.8.Final-redhat-00001</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -447,7 +447,7 @@
         <dependency>
           <groupId>org.jboss.ws.cxf</groupId>
           <artifactId>jbossws-cxf-dist</artifactId>
-          <version>${project.version}</version>
+          <version>5.4.8.Final-redhat-00001</version>
           <type>pom</type>
           <scope>provided</scope>
         </dependency>

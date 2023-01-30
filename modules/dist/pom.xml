@@ -8,46 +8,43 @@
   <parent>
     <groupId>org.jboss.ws.cxf</groupId>
     <artifactId>jbossws-cxf</artifactId>
-    <version>5.4.8.Final</version>
+    <version>5.4.8.Final-redhat-00001</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-
-  <properties>
-  </properties>
 
   <dependencies>
       <dependency>
          <groupId>org.jboss.ws.cxf</groupId>
          <artifactId>jbossws-cxf-client</artifactId> 
-         <version>${project.version}</version>          
+         <version>5.4.8.Final-redhat-00001</version>          
          <scope>provided</scope>
       </dependency>
 
       <dependency>
          <groupId>org.jboss.ws.cxf</groupId>
          <artifactId>jbossws-cxf-jaspi</artifactId> 
-         <version>${project.version}</version>          
+         <version>5.4.8.Final-redhat-00001</version>          
          <scope>provided</scope>
       </dependency>
 
       <dependency>
          <groupId>org.jboss.ws.cxf</groupId>
          <artifactId>jbossws-cxf-transports-undertow</artifactId>
-         <version>${project.version}</version>     
+         <version>5.4.8.Final-redhat-00001</version>     
          <scope>provided</scope>
       </dependency>
 
       <dependency>
          <groupId>org.jboss.ws.cxf</groupId>
          <artifactId>jbossws-cxf-transports-udp</artifactId>
-         <version>${project.version}</version>     
+         <version>5.4.8.Final-redhat-00001</version>     
          <scope>provided</scope>
       </dependency>
 
       <dependency>
          <groupId>org.jboss.ws.cxf</groupId>
          <artifactId>jbossws-cxf-server</artifactId>
-         <version>${project.version}</version>     
+         <version>5.4.8.Final-redhat-00001</version>     
          <scope>provided</scope>
       </dependency>
 
