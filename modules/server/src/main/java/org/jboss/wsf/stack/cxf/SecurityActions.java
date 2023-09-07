@@ -24,8 +24,10 @@ package org.jboss.wsf.stack.cxf;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
+import org.jboss.ws.common.utils.DelegateClassLoader;
+
 /**
- * 
+ *
  * @author alessio.soldano@jboss.com
  * @since 17-Feb-2010
  *
@@ -34,7 +36,7 @@ class SecurityActions
 {
    /**
     * Get context classloader.
-    * 
+    *
     * @return the current context classloader
     */
    static ClassLoader getContextClassLoader()
@@ -47,6 +49,7 @@ class SecurityActions
       else
       {
          return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
+            @Override
             public ClassLoader run()
             {
                return Thread.currentThread().getContextClassLoader();
@@ -54,7 +57,7 @@ class SecurityActions
          });
       }
    }
-   
+
    /**
     * Set context classloader.
     *
@@ -70,6 +73,7 @@ class SecurityActions
       {
          AccessController.doPrivileged(new PrivilegedAction<Object>()
          {
+            @Override
             public Object run()
             {
                Thread.currentThread().setContextClassLoader(classLoader);
@@ -78,4 +82,25 @@ class SecurityActions
          });
       }
    }
+
+   static DelegateClassLoader createDelegateClassLoader(final ClassLoader clientClassLoader, final ClassLoader origClassLoader)
+   {
+      SecurityManager sm = System.getSecurityManager();
+      if (sm == null)
+      {
+         return new DelegateClassLoader(clientClassLoader, origClassLoader);
+      }
+      else
+      {
+         return AccessController.doPrivileged(new PrivilegedAction<DelegateClassLoader>()
+         {
+            @Override
+            public DelegateClassLoader run()
+            {
+               return new DelegateClassLoader(clientClassLoader, origClassLoader);
+            }
+         });
+      }
+   }
+
 }

@@ -85,66 +85,156 @@ public class CXFServletExt extends AbstractHTTPServlet implements ServletDelegat
    @Override
    protected void invoke(HttpServletRequest req, HttpServletResponse res) throws ServletException
    {
-      ServletHelper.callRequestHandler(req, res, getServletContext(), bus, endpoint);
+      ClassLoader previous = pushServerCL();
+      try
+      {
+         ServletHelper.callRequestHandler(req, res, getServletContext(), bus, endpoint);
+      }
+      finally
+      {
+         popServerCL(previous);
+      }
    }
 
    @Override
    public void destroy()
    {
-      ServletHelper.callPreDestroy(endpoint);
+      ClassLoader previous = pushServerCL();
+      try
+      {
+         ServletHelper.callPreDestroy(endpoint);
+      }
+      finally
+      {
+         popServerCL(previous);
+      }
    }
 
    @Override
    public void doHead(HttpServletRequest request, HttpServletResponse response, ServletContext context)
          throws ServletException, IOException
    {
-      this.doHead(request, response);
+      ClassLoader previous = pushServerCL();
+      try
+      {
+         this.doHead(request, response);
+      }
+      finally
+      {
+         popServerCL(previous);
+      }
    }
 
    @Override
    public void doGet(HttpServletRequest request, HttpServletResponse response, ServletContext context)
          throws ServletException, IOException
    {
-      this.doGet(request, response);
+      ClassLoader previous = pushServerCL();
+      try
+      {
+         this.doGet(request, response);
+      }
+      finally
+      {
+         popServerCL(previous);
+      }
    }
 
    @Override
    public void doPost(HttpServletRequest request, HttpServletResponse response, ServletContext context)
          throws ServletException, IOException
    {
-      this.doPost(request, response);
+      ClassLoader previous = pushServerCL();
+      try
+      {
+         this.doPost(request, response);
+      }
+      finally
+      {
+         popServerCL(previous);
+      }
    }
 
    @Override
    public void doPut(HttpServletRequest request, HttpServletResponse response, ServletContext context)
          throws ServletException, IOException
    {
-      this.doPut(request, response);
+      ClassLoader previous = pushServerCL();
+      try
+      {
+         this.doPut(request, response);
+      }
+      finally
+      {
+         popServerCL(previous);
+      }
    }
 
    @Override
    public void doDelete(HttpServletRequest request, HttpServletResponse response, ServletContext context)
          throws ServletException, IOException
    {
-      this.doDelete(request, response);
+      ClassLoader previous = pushServerCL();
+      try
+      {
+         this.doDelete(request, response);
+      }
+      finally
+      {
+          popServerCL(previous);
+      }
    }
 
    @Override
    public void service(HttpServletRequest request, HttpServletResponse response, ServletContext context)
          throws ServletException, IOException
    {
-      this.service(request, response);
+
+      ClassLoader previous = pushServerCL();
+      try
+      {
+         this.service(request, response);
+      }
+      finally
+      {
+         popServerCL(previous);
+      }
    }
 
+   @Override
    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
          ServletException
    {
-      // filtering not supported, move on
-      chain.doFilter(request, response);
+
+      ClassLoader previous = pushServerCL();
+      try
+      {
+         // filtering not supported, move on
+         chain.doFilter(request, response);
+      }
+      finally
+      {
+         popServerCL(previous);
+      }
    }
 
+   @Override
    protected Bus getBus()
    {
       return bus;
    }
+
+   private ClassLoader pushServerCL()
+   {
+      ClassLoader current = SecurityActions.getContextClassLoader();
+      SecurityActions.setContextClassLoader(SecurityActions.createDelegateClassLoader(current, CXFServletExt.class.getClassLoader()));
+//      SecurityActions.setContextClassLoader(SecurityActions.createDelegateClassLoader(CXFServletExt.class.getClassLoader(), current));
+      return current;
+   }
+
+   private void popServerCL(ClassLoader previousCL)
+   {
+      SecurityActions.setContextClassLoader(previousCL);
+   }
+
 }
