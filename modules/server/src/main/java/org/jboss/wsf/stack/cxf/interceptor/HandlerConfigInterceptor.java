@@ -48,6 +48,7 @@ import org.jboss.ws.common.utils.DelegateClassLoader;
 import org.jboss.wsf.spi.deployment.Endpoint;
 import org.jboss.wsf.spi.security.EJBMethodSecurityAttribute;
 import org.jboss.wsf.spi.security.EJBMethodSecurityAttributeProvider;
+import org.jboss.wsf.stack.cxf.JAXPDelegateClassLoader;
 
 /**
  * Interceptor that configures a jbossws handler chain and can skip authentication.
@@ -198,6 +199,20 @@ public class HandlerConfigInterceptor extends AbstractPhaseInterceptor<Message>
             SecurityActions.setContextClassLoader(original);
          }
       }
+
+      public void mepComplete(Message message) {
+         ClassLoader original = SecurityActions.getContextClassLoader();
+         try {
+            if (original instanceof JAXPDelegateClassLoader) {
+               JAXPDelegateClassLoader jaxpLoader = (JAXPDelegateClassLoader)original;
+               SecurityActions.setContextClassLoader(jaxpLoader.getDelegate());
+            }
+            super.mepComplete(message);
+         } finally {
+            SecurityActions.setContextClassLoader(original);
+         }
+      }
+
 
       protected void checkAuthorization(MessageContext ctx)
       {
