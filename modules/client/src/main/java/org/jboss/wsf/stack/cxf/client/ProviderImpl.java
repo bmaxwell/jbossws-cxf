@@ -583,6 +583,11 @@ public class ProviderImpl extends org.apache.cxf.jaxws22.spi.ProviderImpl
       }
 
       @Override
+      public void setHandlerResolver(final HandlerResolver hr) {
+         super.setHandlerResolver(new TCCLAwareHandlerResolver(hr));
+      }
+
+      @Override
       public <T> Dispatch<T> createDispatch(QName portName,
             Class<T> type,
             JAXBContext context,
