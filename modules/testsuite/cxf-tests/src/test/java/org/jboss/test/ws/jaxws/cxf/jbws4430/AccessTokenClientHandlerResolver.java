@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.jboss.logging.Logger;
 
-import jakarta.enterprise.inject.spi.CDI;
-import jakarta.json.JsonObject;
-import jakarta.xml.ws.handler.Handler;
-import jakarta.xml.ws.handler.HandlerResolver;
-import jakarta.xml.ws.handler.PortInfo;
+import javax.enterprise.inject.spi.CDI;
+import javax.json.JsonObject;
+import javax.xml.ws.handler.Handler;
+import javax.xml.ws.handler.HandlerResolver;
+import javax.xml.ws.handler.PortInfo;
 
 public class AccessTokenClientHandlerResolver implements HandlerResolver {
 

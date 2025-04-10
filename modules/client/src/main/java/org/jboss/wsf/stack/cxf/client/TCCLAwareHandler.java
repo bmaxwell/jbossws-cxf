@@ -18,8 +18,8 @@
  */
 package org.jboss.wsf.stack.cxf.client;
 
-import jakarta.xml.ws.handler.Handler;
-import jakarta.xml.ws.handler.MessageContext;
+import javax.xml.ws.handler.Handler;
+import javax.xml.ws.handler.MessageContext;
 import org.jboss.ws.common.utils.DelegateClassLoader;
 
 /**

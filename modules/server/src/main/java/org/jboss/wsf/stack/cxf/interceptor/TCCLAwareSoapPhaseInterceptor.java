@@ -24,9 +24,9 @@ import java.util.Set;
 
 import javax.xml.namespace.QName;
 
-import jakarta.xml.ws.Binding;
-import jakarta.xml.ws.handler.Handler;
-import jakarta.xml.ws.handler.soap.SOAPHandler;
+import javax.xml.ws.Binding;
+import javax.xml.ws.handler.Handler;
+import javax.xml.ws.handler.soap.SOAPHandler;
 
 import org.apache.cxf.binding.soap.SoapMessage;
 import org.apache.cxf.binding.soap.interceptor.SoapInterceptor;

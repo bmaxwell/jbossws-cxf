@@ -20,7 +20,7 @@ package org.jboss.wsf.stack.cxf.interceptor;
 
 import java.util.function.UnaryOperator;
 
-import jakarta.xml.ws.Binding;
+import javax.xml.ws.Binding;
 
 import org.apache.cxf.binding.soap.SoapMessage;
 import org.apache.cxf.binding.soap.interceptor.SoapInterceptor;

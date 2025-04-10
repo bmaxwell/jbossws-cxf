@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.function.UnaryOperator;
 
-import jakarta.xml.ws.Binding;
+import javax.xml.ws.Binding;
 
 import org.apache.cxf.Bus;
 import org.apache.cxf.BusFactory;

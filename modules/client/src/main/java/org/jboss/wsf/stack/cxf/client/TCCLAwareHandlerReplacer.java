@@ -18,7 +18,7 @@
  */
 package org.jboss.wsf.stack.cxf.client;
 
-import jakarta.xml.ws.handler.Handler;
+import javax.xml.ws.handler.Handler;
 
 import java.util.function.UnaryOperator;
 

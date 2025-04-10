@@ -49,6 +49,7 @@ import javax.xml.ws.EndpointContext;
 import javax.xml.ws.EndpointReference;
 import javax.xml.ws.Service.Mode;
 import javax.xml.ws.WebServiceFeature;
+import javax.xml.ws.handler.HandlerResolver;
 import javax.xml.ws.spi.Invoker;
 import javax.xml.ws.spi.ServiceDelegate;
 
